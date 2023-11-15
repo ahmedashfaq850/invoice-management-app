@@ -1,13 +1,15 @@
 import React from "react";
 import invoice from "../assets/invoice.png";
 import { BsMoonFill } from "react-icons/bs";
+import { BiSun } from "react-icons/bi";
 
-const Header = () => {
+const Header = ({ handleFunction, darkMode }) => {
+  console.log(darkMode);
   return (
-    <div>
+    <section className="z-50">
       {/* Large Screen header */}
       <div className="hidden lg:block">
-        <div className="bg-[#1e2139] w-[70px] flex flex-col items-center rounded-r-xl h-screen">
+        <div className="bg-[#373b53] w-[70px] flex flex-col items-center rounded-r-xl h-screen">
           {/* logo  */}
           <div className="flex-grow">
             <img
@@ -21,14 +23,15 @@ const Header = () => {
 
           {/* Toggle Mode */}
           <button className="pb-5">
-            <BsMoonFill className="text-purple-300" />
+          {darkMode ? (<BsMoonFill onClick={handleFunction} className="text-purple-300" />) : 
+            <BiSun onClick={handleFunction} className="text-purple-300" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Header */}
       <div className="block lg:hidden">
-        <div className="w-full h-[50px] flex justify-between items-center my-auto bg-[#1e2139] px-10">
+        <div className="w-full h-[50px] flex justify-between items-center my-auto bg-[#373b53] px-5">
           {/* Logo */}
           <div className="">
             <img
@@ -42,13 +45,12 @@ const Header = () => {
 
           {/* Toggle Mode */}
           <div>
-            <button>
-              <BsMoonFill className="text-purple-300" />
-            </button>
+            {darkMode ? (<BsMoonFill onClick={handleFunction} className="text-purple-300" />) : 
+            <BiSun onClick={handleFunction} className="text-purple-300" />}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
